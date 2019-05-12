@@ -44,8 +44,7 @@ function(hunter_patch_unrelocatable_text_files)
       file(REMOVE "${text_full_path}")
 
       file(WRITE "${text_full_path}" "${output_content}\n")
-    elseif("${text_full_path}" IN_LIST
-        ${HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES_OPTIONAL})
+    elseif(text_file IN_LIST HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES_OPTIONAL)
       hunter_status_debug("Not patching missing text file: ${text_full_path}")
     else()
       hunter_user_error(
